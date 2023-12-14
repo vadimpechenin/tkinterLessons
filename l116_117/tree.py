@@ -36,6 +36,7 @@ my_tree.heading("Favourite Pizza", text="Favourite Pizza", anchor=W)
 #Наполнение данными
 names = ["John", "Mary", "Tina", "Bob", "Erin", "Wes"]
 pizza = ["Peperroni", "Cheese", "Ham", "Supreme", "Cheese", "Onion"]
+
 global count
 count = 0
 for record in names:
