@@ -49,12 +49,22 @@ my_tree.heading("ID", text="ID", anchor=W)
 my_tree.heading("Favourite Pizza", text="Favourite Pizza", anchor=W)
 
 #Наполнение данными
-names = ["John", "Mary", "Tina", "Bob", "Erin", "Wes"]
-pizza = ["Peperroni", "Cheese", "Ham", "Supreme", "Cheese", "Onion"]
+names = ["John", "Mary", "Tina", "Bob", "Erin", "Wes", "Tina", "Bob", "Erin"]
+pizza = ["Peperroni", "Cheese", "Ham", "Supreme", "Cheese", "Onion", "Ham", "Supreme", "Cheese"]
+
+#Создать чредование цвета строк
+my_tree.tag_configure('oddrow', background="white")
+my_tree.tag_configure('evenrow', background="lightblue")
+
 global count
 count = 0
+
 for record in names:
-    my_tree.insert(parent='', index='end', iid=count, text="",values=(record, count+1, pizza[count]))
+    if count % 2 == 0:
+        my_tree.insert(parent='', index='end', iid=count, text="", values=(record, count + 1, pizza[count]),
+                       tags=('evenrow',))
+    else:
+        my_tree.insert(parent='', index='end', iid=count, text="",values=(record, count+1, pizza[count]), tags = ('oddrow',))
     count +=1
 #Добавить детей
 if (1==0):
@@ -89,8 +99,13 @@ topping_box.grid(row=1, column=2)
 #Функция добавления записи
 def add_record():
     global count
-
-    my_tree.insert(parent='', index='end', iid=count, text="", values=(name_box.get(), id_box.get(), topping_box.get()))
+    if count % 2 == 0:
+        my_tree.insert(parent='', index='end', iid=count, text="", values=(name_box.get(), id_box.get(), topping_box.get()),
+                       tags=('evenrow',))
+    else:
+        my_tree.insert(parent='', index='end', iid=count, text="",
+                       values=(name_box.get(), id_box.get(), topping_box.get()),
+                       tags=('oddrow',))
     count += 1
     #Очистить поля
     name_box.delete(0, END)
