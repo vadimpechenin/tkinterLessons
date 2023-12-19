@@ -10,7 +10,7 @@ def getSolutionFolder():
     return pathlib.Path(__file__).parent.parent.resolve()
 
 path = getSolutionFolder()
-file = path.joinpath("l8_9").joinpath("test_axe.ico").resolve()
+file = path.joinpath("l8_10").joinpath("test_axe.ico").resolve()
 root.iconbitmap(file)
 root.geometry("500x650")
 
